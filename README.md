@@ -6,7 +6,7 @@
 - MBA, Data Science & Analytics.
 
 ### Work Experience
-Researcher on Geological Survey of Brazil (https://www.sgb.gov.br/).
+ - Researcher on Geological Survey of Brazil (https://www.sgb.gov.br/).
  - Geoprocessing Team.
 
 ### Projects
