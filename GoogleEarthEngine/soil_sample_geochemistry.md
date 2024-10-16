@@ -112,9 +112,13 @@ Figure 6 - Spatial distribution of samples.
 
 Now let's plot a histogram of the distribution these elements using ui.Chart.feature.histogram() function. The parameters is a featureCollection and porperty name, the figure 7 represent the distribution of iron and the figure 8 represent the distribution of cupper. Analising the cupper values it's possible to conclude that most important interval variabel to 1.6 to 21 ppm, and max value is 45 ppm, the 121 ppm values is outlier. When we analising the iron histgram we conclude that the principal interval goes to 1.6 to 6 ppm, and existis some outliers values in 17 ppm. 
 
-![figure 7](image/histogram_iron)
+![figure 7](image/histogram_iron.png)
 
 Figure 7 - Histogram of iron ditribution
+
+![figure 8](image/histogram_cupper.png)
+
+Figure 8 - Histogram of cupper distribution
 
 
 
