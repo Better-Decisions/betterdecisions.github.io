@@ -58,7 +58,7 @@ Map.addLayer(contour_doce, {palette:["red"]}, "Rio doce Basin")
 
 })
 ```
-![figure 3](image/basilBrazil.png) 
+![figure 3](image/basinBrazil.png) 
 
 The second step is upload the csv file that contains all of soil samples and your respectives values of chemical analyses for each element and we use the asset space to store the file. This dataset has latitude and longitude columns, so it's necessary give this information when you configuring the csv file enviroment on GEE assets, it's explained in figure 4
 
