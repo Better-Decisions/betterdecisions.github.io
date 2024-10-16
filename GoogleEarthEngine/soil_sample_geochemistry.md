@@ -1,4 +1,4 @@
-# Geochemical soil analyses 
+# Geochemical soil analyses using Google Earth Engine
 ## 1 - Introduction
 This paper explore a possibility to analyses geochemistry dataset of soil samples using [google earth engine](https://earthengine.google.com/). The google earth engine is a plataform that you can combine satellite images, javascript algorithms and real world applications, in your code plataform make it's possible up load any file. SO this exemple I will use a geochemistry dataset of soil samples avaiable free on the [Geological Survey of Brazil](https://geosgb.sgb.gov.br/geosgb/downloads.html), and you can do the same download, see the figure 1 to find easelly the Bacia_do_Rio_Doce.csv file.
 
@@ -74,6 +74,37 @@ The second step is upload the csv file that contains all of soil samples and you
 
 ![figure 4](image/figure4.png)
 Figure 4 - Upload a csv file with latitude and longitude columns
+
+
+Let's continue and go back to the code editor. Now we need to read the csv file into GEE, the dataset is a FeatureCollection again and use the path of the csv file as parameter. To understand the dataset is necessary print the data on console, to get the number of rows and the name of the columns (figure 5). This dataset has 74 columns and 540 rows, but now let's filter the dataset and get only the cupper and gold columns and plot this geometry point as a feature in the map(figure 6). 
+
+```
+// Read the csv file 
+
+var dataset = ee.FeatureCollection("users/contatobetterdecisions/Bacia_do_Rio_Doce_sedimento")
+
+print(dataset)
+
+print("Size of dataset", dataset.size())
+
+
+// Now let's add the table 
+
+Map.addLayer(dataset,{color: "black"}, "Soil samples")
+
+
+// Now let's select only gold and cupper columns.
+
+var au_cu_sample = dataset.select(["au_ppm","cu_ppm"])
+
+print("Size of dataset" , au_cu_sample.size())
+
+
+```
+
+![figure 5](
+
+
 
 
 
