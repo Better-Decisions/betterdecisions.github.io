@@ -112,6 +112,22 @@ Figure 6 - Spatial distribution of samples.
 
 Now let's plot a histogram of the distribution these elements using ui.Chart.feature.histogram() function. The parameters is a featureCollection and porperty name, the figure 7 represent the distribution of iron and the figure 8 represent the distribution of cupper. Analising the cupper values it's possible to conclude that most important interval variabel to 1.6 to 21 ppm, and max value is 45 ppm, the 121 ppm values is outlier. When we analising the iron histgram we conclude that the principal interval goes to 1.6 to 6 ppm, and existis some outliers values in 17 ppm. 
 
+```
+// Create a histogram of Iron
+var histogram_fe = ui.Chart.feature.histogram({
+  features:fe_cu_sample,
+  property:"fe_pct"
+  })
+print(histogram_fe)
+
+// Create a histogram of cupper
+var histogram_cu = ui.Chart.feature.histogram({
+  features:fe_cu_sample,
+  property:"fe_pct"
+  })
+print(histogram_cu)
+```
+
 ![figure 7](image/histogram_iron.png)
 
 Figure 7 - Histogram of iron ditribution
@@ -122,9 +138,61 @@ Figure 8 - Histogram of cupper distribution
 
 
 
+## 5 - Kriging map of Iron and Cupper
+Kriging is a geoestatistic regression method to interpolate data and this method is aplicable to a single property, if yoou want to calculate for two or more elements the method are co-kriging. In this paper let's calculate the interpolation to iron an than to cupper. For this process the GEE functions use kriging() function and the parameters are a featureCollection, the target element, the shape(gaussian, exponential, etc) and the reducer, in this case th mean was the reducer. The values of range, sill, nugget and maxDistnace was a default. The result is a image of interpolation. the color ramp used was deffined in the imageVisParam(2,3) variable, setting the max and min values and the hexadeciaml values to the colors, figure 9 represent iron result of Kriging interpolation and figure 10 represent cupper result of kriging interpolation. 
+
+```
+var imageVisParam2 = {"opacity":1,"bands":["fe_pct"],"min":0.7,"max":16.17,
+                      "palette":["1f1cfc","#9bffd0","baf6ff","7eef5f","f8ff3e","ff9b5c","ff2a45","fd07ff","ffffff"]};
+var map_fe = fe_cu_sample.kriging({
+ propertyName: "fe_pct",
+ shape: 'exponential',
+ range: 100 * 1000,
+ sill: 1.0,
+ nugget: 0.1,
+ maxDistance: 100 * 1000,
+ reducer: 'mean'
+  
+})
+Map.addLayer(map_fe.clip(doce_basin), imageVisParam2, "Kriging Map of Iron")
 
 
 
+
+var imageVisParam3 = {"opacity":1,"bands":["cu_ppm"],"min":2.43,"max":45.71,
+                    "palette":["1f1cfc","#9bffd0","baf6ff","7eef5f","f8ff3e","ff9b5c","ff2a45","fd07ff","ffffff"]};
+var map_cu = fe_cu_sample.kriging({
+propertyName: "cu_ppm",
+shape: 'exponential',
+range: 100 * 1000,
+  sill: 1.0,
+  nugget: 0.1,
+  maxDistance: 100 * 1000,
+  reducer: 'mean'
+  
+})
+Map.addLayer(map_cu.clip(doce_basin), imageVisParam3, "Kriging Map of cupper")
+
+
+```
+
+[figure 9](image/krigingmap_iron.png)
+
+Figure 9 - In red we can see the higher values of iron.
+
+[figure 10](image/krigging_cupepr.png)
+
+Figure 10 - In red we can see the higher values of cupper distribution.
+
+## 6 - Conclusion
+
+Using google earth engine it's possible development amazing analyses, it's a plataform if you have geospatial data. 
+Statistical functions are easily usable and has a lot of geostatistics method avaible. 
+The code link is here  ---- > https://code.earthengine.google.com/ec0782798ed72ffe93e9d683f6c37adf 
+Thanks to read and I hope that it was help you. 
+
+
+Better Decisions 
 
 
 
