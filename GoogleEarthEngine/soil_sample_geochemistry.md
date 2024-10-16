@@ -8,13 +8,13 @@ This paper explore a possibility to analyses geochemistry dataset of soil sample
 Figure 1 - Download page of Geological Survey of Brazil. Choose Planilha (csv) - Bacia do Rio Doce file.
 
 ## 2 - Objectives
-This dataset has chemical analyses of different elements, like gold and cupper and other more, first we gonna plot that samples on Landsat 8 image, than we analyse the values of gold and cupper using data view technices avaiable on the plataform. The last part we gonna calculate index for cupper, the gossan index and create a Kringing interpolation to gold an cupper.
+This dataset has chemical analyses of different elements, like iron and cupper and other more, first we gonna plot that samples on Landsat 8 image, than we analyse the values of gold and cupper using data view technices avaiable on the plataform. The last part we gonna calculate index for cupper, the gossan index and create a Kringing interpolation to iron an cupper.
 
 ## 3 - The Dataset
 The dataset represent a collection of samples in a hidrographic Basin, in case Doce Basin, locate in Minas Gerais Province, Southeast of Brazil. It's has values of latitude and longitude, with the name of the basin  and the chemical values of each element analysed for sample. 
 
 ![figure 2](image/dataset.png) 
-Figure 2 - Dataset Table. The column au_ppm represet the gold value in ppm for each sample
+Figure 2 - Dataset Table. 
 
 
 For this work is necessary use a SHP file (ESRI) that contains the geometry of all Brazilian Limits and the columns names and codes. We gonna extract the geometry of Doce Basin using this file. This file is avaiable [here](https://metadados.snirh.gov.br/geonetwork/srv/por/catalog.search#/metadata/f50527b9-24ed-41d5-b063-b5acfb25e10d) on Water Nacional Agency of Brazil.
@@ -76,7 +76,7 @@ The second step is upload the csv file that contains all of soil samples and you
 Figure 4 - Upload a csv file with latitude and longitude columns
 
 
-Let's continue and go back to the code editor. Now we need to read the csv file into GEE, the dataset is a FeatureCollection again and use the path of the csv file as parameter. To understand the dataset is necessary print the data on console, to get the number of rows and the name of the columns (figure 5). This dataset has 74 columns and 540 rows, but now let's filter the dataset and get only the cupper and gold columns and plot this geometry point as a feature in the map(figure 6). 
+Let's continue and go back to the code editor. Now we need to read the csv file into GEE, the dataset is a FeatureCollection again and use the path of the csv file as parameter. To understand the dataset is necessary print the data on console, to get the number of rows and the name of the columns (figure 5). This dataset has 74 columns and 540 rows, but now let's filter the dataset and get only the cupper and iron columns and plot this geometry point as a feature in the map(figure 6). 
 
 ```
 // Read the csv file 
@@ -95,14 +95,27 @@ Map.addLayer(dataset,{color: "black"}, "Soil samples")
 
 // Now let's select only gold and cupper columns.
 
-var au_cu_sample = dataset.select(["au_ppm","cu_ppm"])
+var fe_cu_sample = dataset.select(["fe_pct","cu_ppm"])
 
-print("Size of dataset" , au_cu_sample.size())
+print("Size of dataset" , fe_cu_sample.size())
 
 
 ```
 
-![figure 5](
+![figure 5](image/json.png)
+
+Figure 5 - GEE print console of Json dataset. 74 Columns and 540 rows.
+
+![figure 6](image/samples.png)
+
+Figure 6 - Spatial distribution of samples. 
+
+Now let's plot a histogram of the distribution these elements using ui.Chart.feature.histogram() function. The parameters is a featureCollection and porperty name, the figure 7 represent the distribution of iron and the figure 8 represent the distribution of cupper. Analising the cupper values it's possible to conclude that most important interval variabel to 1.6 to 21 ppm, and max value is 45 ppm, the 121 ppm values is outlier. When we analising the iron histgram we conclude that the principal interval goes to 1.6 to 6 ppm, and existis some outliers values in 17 ppm. 
+
+![figure 7](image/histogram_iron)
+
+Figure 7 - Histogram of iron ditribution
+
 
 
 
