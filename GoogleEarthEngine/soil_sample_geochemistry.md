@@ -8,7 +8,44 @@ This dataset has chemical analyses of different elements, like gold and cupper a
 
 ## 3 - The Dataset
 The dataset represent a collection of samples in a hidrographic Basin, in case Doce Basin, locate in Minas Gerais Province, Southeast of Brazil. It's has values of latitude and longitude, with the name of the basin  and the chemical values of each element analysed for sample.   
-![figure 2](image/dataset.png)
+![figure 2](image/dataset.png) 
+For this work is necessary use a SHP file (ESRI) that contains the geometry of all Brazilian Limits and the columns names and codes. We gonna extract the geometry of Doce Basin using this file. This file is avaiable [here](https://metadados.snirh.gov.br/geonetwork/srv/por/catalog.search#/metadata/f50527b9-24ed-41d5-b063-b5acfb25e10d) on Water Nacional Agency of Brazil. 
+
+## 4 - Vizualising the dataset on G.E.E
+
+First step is upload the datasets into GEE using the assets space to organize this documents, than let's start to code. Each dataset will be a varaible. The region of interest (roi) is the varaiable that store the shapefile, than let's select the cloumn to filter especifically the Rio Doce basin geometry. 
+```
+// Set the region (roi)
+
+var roi = ee.FeatureCollection("users/contatobetterdecisions/GEOFT_DNAEE_SUBBACIA")
+            
+// Filter selection --  Get the name of rio deoce basin  == Doce
+var data_value = roi.aggregate_array('DNS_NM')
+print('All basins', data_value)
+
+// Select Doce Basin
+
+var doce_basin = roi.filter(ee.Filter.eq("DNS_NM", "Doce"))
+
+
+// Create a contour of all Hidrografic Basins
+var empty = ee.Image().byte()
+var contour = empty.paint({
+  featureCollection: roi,
+  color:1, 
+  width:2
+})
+
+
+// Create a contour of Doce basin
+var empty_doce = ee.Image().byte()
+var contour_doce = empty_doce.paint({
+  featureCollection: doce_basin,
+  color:2, 
+  width:2
+})
+```
+
 
 
 
