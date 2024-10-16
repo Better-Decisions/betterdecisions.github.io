@@ -13,7 +13,11 @@ For this work is necessary use a SHP file (ESRI) that contains the geometry of a
 
 ## 4 - Vizualising the dataset on G.E.E
 
-First step is upload the datasets into GEE using the assets space to organize this documents, than let's start to code. Each dataset will be a varaible. The region of interest (roi) is the varaiable that store the shapefile, than let's select the cloumn to filter especifically the Rio Doce basin geometry. 
+First step is upload the datasets into GEE using the assets space to organize this documents, than let's start to code. Each dataset will be a varaible. The region of interest (roi) is the varaiable that store the shapefile, than let's select the cloumn to filter especifically the Rio Doce basin geometry. After, it's necessary to create a contour of the geometry, using a empty variable that represent a Image with no bytes, than let's paint the empty variable using the paint() function passing the roi as a feature collection and determine the color and the width. 
+Using the aggregate_array() function in a expecific column that conatins the name of all Basin, it's possible get the exactaly name of Rio doce Basin in the dataset. Knowing that the name of Rio doce Baisn is Doce, let's apply a filter() function in roi FeatureCollection, and this filter is boolean filter that's we needs to choice the column tha has the name of the basins and the other parameter is the value that wants to filter, in this case, "Doce". The result of this filter is store in doce_basin variable, and now let's create a empty image using the doce_basin variable as FeatureCollection and do the same process applied to the roi FeatureCollection contour. To finish this part let's plot on the map using the Map.addLayer() function. 
+
+To execute this first step just following the script bellow.
+
 ```
 // Set the region (roi)
 
@@ -43,6 +47,14 @@ var contour_doce = empty_doce.paint({
   featureCollection: doce_basin,
   color:2, 
   width:2
+
+// Add contour om map
+
+Map.addLayer(contour, {palette:["blue"]}, "Hidrografic Basins of Brazil")
+Map.addLayer(doce_basin,{},"Rio doce Basin" )
+Map.addLayer(contour_doce, {palette:["red"]}, "Rio doce Basin")
+
+
 })
 ```
 
