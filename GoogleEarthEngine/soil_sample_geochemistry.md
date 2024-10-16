@@ -4,6 +4,7 @@ This paper explore a possibility to analyses geochemistry dataset of soil sample
 
 
 ![figure 1](image/download.png) 
+
 Figure 1 - Download page of Geological Survey of Brazil. Choose Planilha (csv) - Bacia do Rio Doce file.
 
 ## 2 - Objectives
