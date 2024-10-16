@@ -4,17 +4,18 @@ This paper explore a possibility to analyses geochemistry dataset of soil sample
 ![figure 1](image/download.png) 
 
 ## 2 - Objectives
-(:)This dataset has chemical analyses of different elements, like gold and cupper and other more, first we gonna plot that samples on Landsat 8 image, than we analyse the values of gold and cupper using data view technices avaiable on the plataform. The last part we gonna calculate index for cupper, the gossan index and create a Kringing interpolation to gold an cupper.(:)
+This dataset has chemical analyses of different elements, like gold and cupper and other more, first we gonna plot that samples on Landsat 8 image, than we analyse the values of gold and cupper using data view technices avaiable on the plataform. The last part we gonna calculate index for cupper, the gossan index and create a Kringing interpolation to gold an cupper.
 
 ## 3 - The Dataset
-<center>The dataset represent a collection of samples in a hidrographic Basin, in case Doce Basin, locate in Minas Gerais Province, Southeast of Brazil. It's has values of latitude and longitude, with the name of the basin  and the chemical values of each element analysed for sample.</center>   
+The dataset represent a collection of samples in a hidrographic Basin, in case Doce Basin, locate in Minas Gerais Province, Southeast of Brazil. It's has values of latitude and longitude, with the name of the basin  and the chemical values of each element analysed for sample. 
 ![figure 2](image/dataset.png) 
-<center>For this work is necessary use a SHP file (ESRI) that contains the geometry of all Brazilian Limits and the columns names and codes. We gonna extract the geometry of Doce Basin using this file. This file is avaiable [here](https://metadados.snirh.gov.br/geonetwork/srv/por/catalog.search#/metadata/f50527b9-24ed-41d5-b063-b5acfb25e10d) on Water Nacional Agency of Brazil.</center>
+For this work is necessary use a SHP file (ESRI) that contains the geometry of all Brazilian Limits and the columns names and codes. We gonna extract the geometry of Doce Basin using this file. This file is avaiable [here](https://metadados.snirh.gov.br/geonetwork/srv/por/catalog.search#/metadata/f50527b9-24ed-41d5-b063-b5acfb25e10d) on Water Nacional Agency of Brazil.
 
 ## 4 - Vizualising the dataset on G.E.E
 
-<center>First step is upload the datasets into GEE using the assets space to organize this documents, than let's start to code. Each dataset will be a varaible. The region of interest (roi) is the varaiable that store the shapefile, than let's select the cloumn to filter especifically the Rio Doce basin geometry. After, it's necessary to create a contour of the geometry, using a empty variable that represent a Image with no bytes, than let's paint the empty variable using the paint() function passing the roi as a feature collection and determine the color and the width. 
-Using the aggregate_array() function in a expecific column that conatins the name of all Basin, it's possible get the exactaly name of Rio doce Basin in the dataset. Knowing that the name of Rio doce Baisn is Doce, let's apply a filter() function in roi FeatureCollection, and this filter is boolean filter that's we needs to choice the column tha has the name of the basins and the other parameter is the value that wants to filter, in this case, "Doce". The result of this filter is store in doce_basin variable, and now let's create a empty image using the doce_basin variable as FeatureCollection and do the same process applied to the roi FeatureCollection contour. To finish this part let's plot on the map using the Map.addLayer() function. </center> 
+First step is upload the datasets into GEE using the assets space to organize this documents, than let's start to code. Each dataset will be a varaible. The region of interest (roi) is the varaiable that store the shapefile, than let's select the cloumn to filter especifically the Rio Doce basin geometry. After, it's necessary to create a contour of the geometry, using a empty variable that represent a Image with no bytes, than let's paint the empty variable using the paint() function passing the roi as a feature collection and determine the color and the width. 
+Using the aggregate_array() function in a expecific column that conatins the name of all Basin, it's possible get the exactaly name of Rio doce Basin in the dataset. Knowing that the name of Rio doce Baisn is Doce, let's apply a filter() function in roi FeatureCollection, and this filter is boolean filter that's we needs to choice the column tha has the name of the basins and the other parameter is the value that wants to filter, in this case, "Doce". The result of this filter is store in doce_basin variable, and now let's create a empty image using the doce_basin variable as FeatureCollection and do the same process applied to the roi FeatureCollection contour. To finish this part let's plot on the map using the Map.addLayer() function and the results are in figure 3. 
+
 
 To execute this first step just following the script bellow.
 
@@ -57,8 +58,9 @@ Map.addLayer(contour_doce, {palette:["red"]}, "Rio doce Basin")
 
 })
 ```
+![figure 3](image/basilBrazil.png) 
 
-
+The second step is upload the csv file that contains all of soil samples and your respectives values of chemical analyses for each element and we use the asset space to store the file. This dataset has latitude and longitude columns, so it's necessary give this information when you configuring the csv file enviroment on GEE assets, it's explained in figure 4
 
 
 
