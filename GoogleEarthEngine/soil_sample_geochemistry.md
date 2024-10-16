@@ -180,7 +180,7 @@ Map.addLayer(map_cu.clip(doce_basin), imageVisParam3, "Kriging Map of cupper")
 
 Figure 9 - In red we can see the higher values of iron.
 
-[figure 10](image/krigging_cupepr.png)
+[figure 10](image/krigingmap_cupper.png)
 
 Figure 10 - In red we can see the higher values of cupper distribution.
 
