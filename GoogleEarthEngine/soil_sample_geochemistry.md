@@ -2,6 +2,7 @@
 ## 1 - Introduction
 This paper explore a possibility to analyses geochemistry dataset of soil samples using [google earth engine](https://earthengine.google.com/). The google earth engine is a plataform that you can combine satellite images, javascript algorithms and real world applications, in your code plataform make it's possible up load any file. SO this exemple I will use a geochemistry dataset of soil samples avaiable free on the [Geological Survey of Brazil](https://geosgb.sgb.gov.br/geosgb/downloads.html), and you can do the same download, see the figure 1 to find easelly the Bacia_do_Rio_Doce.csv file.
 ![figure 1](image/download.png) 
+Figure 1 - Download page of Geological Survey of Brazil. Choose Planilha (csv) - Bacia do Rio Doce file.
 
 ## 2 - Objectives
 This dataset has chemical analyses of different elements, like gold and cupper and other more, first we gonna plot that samples on Landsat 8 image, than we analyse the values of gold and cupper using data view technices avaiable on the plataform. The last part we gonna calculate index for cupper, the gossan index and create a Kringing interpolation to gold an cupper.
@@ -9,6 +10,7 @@ This dataset has chemical analyses of different elements, like gold and cupper a
 ## 3 - The Dataset
 The dataset represent a collection of samples in a hidrographic Basin, in case Doce Basin, locate in Minas Gerais Province, Southeast of Brazil. It's has values of latitude and longitude, with the name of the basin  and the chemical values of each element analysed for sample. 
 ![figure 2](image/dataset.png) 
+Figure 2 - Dataset Table. The column au_ppm represet the gold value in ppm for each sample
 For this work is necessary use a SHP file (ESRI) that contains the geometry of all Brazilian Limits and the columns names and codes. We gonna extract the geometry of Doce Basin using this file. This file is avaiable [here](https://metadados.snirh.gov.br/geonetwork/srv/por/catalog.search#/metadata/f50527b9-24ed-41d5-b063-b5acfb25e10d) on Water Nacional Agency of Brazil.
 
 ## 4 - Vizualising the dataset on G.E.E
@@ -59,8 +61,12 @@ Map.addLayer(contour_doce, {palette:["red"]}, "Rio doce Basin")
 })
 ```
 ![figure 3](image/basinBrazil.png) 
+Figure 3 - Hidrographic Basin of Brazil (blue), Hidrographic Doce Basin (red)
 
-The second step is upload the csv file that contains all of soil samples and your respectives values of chemical analyses for each element and we use the asset space to store the file. This dataset has latitude and longitude columns, so it's necessary give this information when you configuring the csv file enviroment on GEE assets, it's explained in figure 4
+The second step is upload the csv file that contains all of soil samples and your respectives values of chemical analyses for each element and we use the asset space to store the file. This dataset has latitude and longitude columns, so it's necessary give this information when you configuring the csv file enviroment on GEE assets, it's explained in figure 4, but it's very simple, choose Assets table set, than click on New button, choose CSV file, on the next window configure the Asset ID, chance projects to users, now click on SELECT button and choose the csv file. The last part is the most important, go to Advanced otpions and put on X column the value of longitude and on the Y column the value of latitude, you need to use the same name of your dataset, than click on UPLOAD button and finish the process. Now you have a FeatureCollection with geospatial data. 
+![figure 4](image/figure4)
+Figure 4 - Upload a csv file with latitude and longitude columns
+
 
 
 
