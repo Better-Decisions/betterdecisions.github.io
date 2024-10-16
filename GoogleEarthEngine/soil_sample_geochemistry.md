@@ -64,7 +64,7 @@ Map.addLayer(contour_doce, {palette:["red"]}, "Rio doce Basin")
 Figure 3 - Hidrographic Basin of Brazil (blue), Hidrographic Doce Basin (red)
 
 The second step is upload the csv file that contains all of soil samples and your respectives values of chemical analyses for each element and we use the asset space to store the file. This dataset has latitude and longitude columns, so it's necessary give this information when you configuring the csv file enviroment on GEE assets, it's explained in figure 4, but it's very simple, choose Assets table set, than click on New button, choose CSV file, on the next window configure the Asset ID, chance projects to users, now click on SELECT button and choose the csv file. The last part is the most important, go to Advanced otpions and put on X column the value of longitude and on the Y column the value of latitude, you need to use the same name of your dataset, than click on UPLOAD button and finish the process. Now you have a FeatureCollection with geospatial data. 
-![figure 4](image/figure4)
+![figure 4](image/figure4.png)
 Figure 4 - Upload a csv file with latitude and longitude columns
 
 
