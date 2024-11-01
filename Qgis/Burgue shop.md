@@ -13,5 +13,5 @@ To this problem I gonna use scrap techinics of web maps site, like bing, google 
 Fisrt we have to understand about the sorce of our project, in this case I need to use a Sistem Coordenate Referece in meters, beacause will be necessary create maps with inteporlation, specifically Kernel density maps. This kind of geoprcessing use interpolation based in distance, and when we talk about distance the best reference is meter, because is easier to calculate. 
 For this project I use EPSG: 3747 to setting all of the enviroment, the excel file of Maps Scraper processing retruns the latitude and longitude in Geografic coordenate system, so it was necessary to reproject the data. The figure 1 is the result of the first step of this job and it's show all 332 Burguer Shop collected into scrap process.
 
-![figure 1](image/download.png) 
+![figure 1](image/burguer_map_location.png) 
 
