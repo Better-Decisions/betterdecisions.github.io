@@ -26,3 +26,14 @@ So we can do the same interpolation with the same parameters, but now we will pu
 
 ![figure 3](image/density_raiting_map.png)
 
+## 5. Conclusion
+Now we have a important task, we need to see if we can locate a new Burguer Shop, so for this part is important compare our results. First let's see the distribution of Burguer Shops based on your rating, figure 4. Using the Bubble map we can concluded that the south and the east area is a good area to open a new Burguer Shop, because has few Burguer Shops, but the rating is good and it's indicate that exists specific clients.
+
+![figure 4](image/density_raiting_map.png)
+
+Using the comparative map (figure 5) I indicate the point 1 like a promissor area, it will be probably a increase area, and this area are between the south and esat axis. 
+
+![figure 5](image/density_raiting_map.png)
+
+So that it's, tomas had a great problem and using geoprocessing we could help you to find a new place for your neww Burguer Shop. 
+
