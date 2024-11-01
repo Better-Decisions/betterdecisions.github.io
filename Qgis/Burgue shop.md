@@ -20,3 +20,7 @@ For this project I use EPSG: 3747 to setting all of the enviroment, the excel fi
 Now we know where are the Burguer shops, but a better visualization of this data is a density map. To do that I wil use the Kernel density map, it's a method based on distance of each element, in this case the element is the burguer shop localization. There are two important parameters of this method, one is the radio that will be used to calculate the distance of each element, the second is the pixel size, in this case the radio is 10.000 meters and the pixel size is a matrix of 5 x 5 meters. The result of this interpolation is avaiable on figure 2.
 
 ![figure 2](image/densitymap_distance.png) 
+
+
+So we can do the same interpolation with the same parameters, but now we will put a weight from one field, in this case the rating value. This information will help us to understand where are the bets rated Burguer Shop in Orlando city, and cross this information with the concentration and distribution of the Burguer Shops. The result of this analyses you can see on figure 3
+
