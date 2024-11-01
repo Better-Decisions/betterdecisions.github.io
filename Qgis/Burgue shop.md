@@ -24,3 +24,5 @@ Now we know where are the Burguer shops, but a better visualization of this data
 
 So we can do the same interpolation with the same parameters, but now we will put a weight from one field, in this case the rating value. This information will help us to understand where are the bets rated Burguer Shop in Orlando city, and cross this information with the concentration and distribution of the Burguer Shops. The result of this analyses you can see on figure 3
 
+![figure 3](image/density_raiting_map.png)
+
