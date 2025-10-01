@@ -15,12 +15,18 @@ The boundaries of Mozambique were obtained directly in QGIS using the HCMGIS plu
 
 ![figure 1](image/localizacao_regional.jpeg) 
 
+Figure 1 - Regional view of Mozambique.
+
 Once the Umbeluzi Basin had been located at a regional scale (Figure 1), the next objective was to better present its geometry and spatial distribution (Figure 2). The Mozambican segment of the basin is located in Maputo Province and covers an area of 2,272 km². In Eswatini, the basin occupies an additional 3,128 km², totaling 5,400 km². Across the entire basin, seventeen sub-basins were delineated for hydrological and management purposes.
 
 ![figure 2](image/Subbacias_umbeluzi.jpeg) 
 
+Figure 2 - Umbeluzi Sub-basins divisions and all their extensions.
+
 At this stage, the client had a clear understanding of the spatial distribution of the study elements. Confirming that the project is entirely located within Mozambican territory — and that it aims to investigate how urban expansion has been impacting surface and groundwater — the client requested the identification of three specific sub-basins and the delimitation of a study area at their confluence (Figure 3).
 
-![figure 3](image/area_hidro.png) 
+![figure 3](image/area_hidro.png)
+
+Figure 3 - The Study area delimitation. 
 
 To ensure accuracy in spatial analyses and area calculations, it is essential to use a projection system suited to the study region. Inappropriate projections can cause significant distortions, especially in projects involving watershed area measurements or the delineation of management units. Therefore, the coordinate system UTM Zone 36S (EPSG:32736), based on the WGS 84 datum, was adopted. This system is well-suited for representing southern Mozambique with high precision. Its use ensures that all measurements are consistent with the region’s spatial reality, avoiding errors that could compromise the quality and reliability of the results.
